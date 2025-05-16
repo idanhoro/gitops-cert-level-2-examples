@@ -15,7 +15,7 @@ spec:
                 - path: application-sets/example-apps/*
   template:
     metadata:
-      name: '{{name}}-{{path.basename}}'
+      name: '{{path.basename}}-{{name}}'  # Example: sealed-secrets-cluster-3
     spec:
       project: default
       source:
@@ -24,7 +24,7 @@ spec:
         path: '{{path}}'
       destination:
         server: '{{server}}'
-        namespace: '{{path.basename}}'
+        namespace: '{{path.basename}}'  # deploy each app in its own namespace
       syncPolicy:
         automated:
           prune: true
